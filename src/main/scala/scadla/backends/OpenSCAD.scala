@@ -225,12 +225,20 @@ class OpenSCAD(header: List[String]) extends Renderer {
     view(obj, Nil)
   }
 
+  /**
+   * Runs OpenSCAD on a temporary filename, deleting it when exiting OpenSCAD.
+   */
   def runOpenSCAD(obj: Solid, options: Iterable[String] = Nil) = {
     val tmpFile = toTmpFile(obj)
     val cmd = Array(command, tmpFile.getPath) ++ options
     val res = SysCmd(cmd)
     tmpFile.delete
     res
+  }
+
+  def toSCAD(obj: Solid, fileName: String): Unit = {
+    val file = new java.io.File(fileName + ".scad")
+    writeInFile(file, obj)
   }
 
   def getResult(obj: Solid, options: Iterable[String] = Nil) = {

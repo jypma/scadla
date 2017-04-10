@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
   "eu.mihosoft.vrl.jcsg" % "jcsg" % "0.5.2"
 )
 
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")
+//addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")
 
 fork := true
 
